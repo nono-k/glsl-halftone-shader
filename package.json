@@ -13,6 +13,7 @@
     "vite": "^8.0.0"
   },
   "dependencies": {
-    "ogl": "^1.0.11"
+    "ogl": "^1.0.11",
+    "vite-plugin-glsl": "^1.5.5"
   }
 }
