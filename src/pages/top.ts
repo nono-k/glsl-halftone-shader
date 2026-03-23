@@ -13,6 +13,6 @@ const list = document.getElementById('demo-list') as HTMLUListElement;
 
 demos.forEach(demo => {
   const li = document.createElement('li');
-  li.innerHTML = `<a href="/demo.html?id=${demo.id}">${demo.title}</a>`;
+  li.innerHTML = `<a href="/glsl-halftone-shader/demo.html?id=${demo.id}">${demo.title}</a>`;
   list.appendChild(li);
 });
