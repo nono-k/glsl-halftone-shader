@@ -1,4 +1,4 @@
-import{a as e,c as t,i as n,n as r,o as i,r as a,s as o,t as s}from"./Orbit-CdgHAKCp.js";import{n as c,t as l}from"./img-01-DU5kAshs.js";var u=`#version 300 es
+import{a as e,c as t,i as n,l as r,n as i,o as a,r as o,s,t as c}from"./tweakpane-DG9W7XnG.js";import{n as l,t as u}from"./img-01-DU5kAshs.js";var d=`#version 300 es
 precision mediump float;
 
 in vec2 vUv;
@@ -6,6 +6,7 @@ out vec4 fragColor;
 
 uniform vec2 uResolution;
 uniform sampler2D uTexture;
+uniform float freq;
 
 float PI = 3.1415926;
 
@@ -54,7 +55,7 @@ void main() {
   vec2 uv = vUv;
   vec2 pos = uv * uResolution / min(uResolution.x, uResolution.y);
 
-  float freq = 40.0;
+  
 
   float angle = PI / 4.0;
   mat2 rot = mat2(
@@ -80,7 +81,7 @@ void main() {
   vec3 color = mix(black, white, aastep(radius, dist + n));
 
   fragColor = vec4(color, 1.0);
-}`,d=`#version 300 es
+}`,f=`#version 300 es
 
 in vec2 uv;
 in vec3 position;
@@ -93,4 +94,4 @@ out vec2 vUv;
 void main() {
   vUv = uv;
   gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-}`,f=document.querySelector(`canvas`),p=new e({canvas:f}),m=p.gl,h=new a(m,{fov:45});h.position.set(0,0,5);var g=new s(h,{target:new t(0,0,0),element:f}),_=new n,v=new c(m),y=new Image;y.src=l,y.onload=()=>v.image=y;var b=new o(m,{position:{size:3,data:new Float32Array([-1,-1,0,1,-1,0,1,1,0,-1,1,0])},uv:{size:2,data:new Float32Array([0,0,1,0,1,1,0,1])},index:{data:new Uint16Array([0,1,2,0,2,3])}}),x=new i(m,{vertex:d,fragment:u,uniforms:{uResolution:{value:[m.canvas.width,m.canvas.height]},uTexture:{value:v}}}),S=new r(m,{geometry:b,program:x});S.setParent(_);function C(){p.setSize(window.innerWidth,window.innerHeight),h.perspective({aspect:m.canvas.width/m.canvas.height});let e=h.position.z,t=h.fov*Math.PI/180,n=2*Math.tan(t/2)*e,r=n*h.aspect;S.scale.set(r/2,n/2,1)}window.addEventListener(`resize`,C,!1),C(),requestAnimationFrame(w);function w(){requestAnimationFrame(w),g.update(),x.uniforms.uResolution.value=[m.canvas.width,m.canvas.height],p.render({scene:_,camera:h})}
+}`,p=document.querySelector(`canvas`),m=new a({canvas:p}),h=m.gl,g=new n(h,{fov:45});g.position.set(0,0,5);var _=new i(g,{target:new r(0,0,0),element:p}),v=new e,y=new l(h),b=new Image;b.src=u,b.onload=()=>y.image=b;var x=new t(h,{position:{size:3,data:new Float32Array([-1,-1,0,1,-1,0,1,1,0,-1,1,0])},uv:{size:2,data:new Float32Array([0,0,1,0,1,1,0,1])},index:{data:new Uint16Array([0,1,2,0,2,3])}}),S=new s(h,{vertex:f,fragment:d,uniforms:{uResolution:{value:[h.canvas.width,h.canvas.height]},uTexture:{value:y},freq:{value:40}}}),C=new o(h,{geometry:x,program:S});C.setParent(v);function w(){m.setSize(window.innerWidth,window.innerHeight),g.perspective({aspect:h.canvas.width/h.canvas.height});let e=g.position.z,t=g.fov*Math.PI/180,n=2*Math.tan(t/2)*e,r=n*g.aspect;C.scale.set(r/2,n/2,1)}window.addEventListener(`resize`,w,!1),w(),requestAnimationFrame(T);function T(){requestAnimationFrame(T),_.update(),S.uniforms.uResolution.value=[h.canvas.width,h.canvas.height],m.render({scene:v,camera:g})}var E=S.uniforms.freq,D={freq:E.value},O=new c;O.addBinding(D,`freq`,{min:0,max:100,step:.1}),O.on(`change`,()=>{E.value=D.freq});
