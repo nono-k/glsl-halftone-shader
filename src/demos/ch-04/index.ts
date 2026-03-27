@@ -1,4 +1,5 @@
 import { Renderer, Camera, Transform, Texture, Program, Mesh, Geometry, Vec3, Orbit } from "ogl";
+import { Pane } from "tweakpane";
 
 import fragment from './fragment.glsl?raw';
 import vertex from './vertex.glsl?raw';
@@ -38,6 +39,7 @@ const program = new Program(gl, {
   uniforms: {
     uResolution: { value: [gl.canvas.width, gl.canvas.height] },
     uTexture: { value: texture },
+    freq: { value: 40.0 },
   }
 });
 
@@ -70,3 +72,16 @@ function update() {
   ];
   renderer.render({ scene, camera });
 }
+
+const freq = program.uniforms.freq;
+
+const PARAMS = {
+  freq: freq.value
+}
+
+const pane = new Pane();
+pane.addBinding(PARAMS, "freq", { min: 0, max: 100, step: 0.1 });
+
+pane.on('change', () => {
+  freq.value = PARAMS.freq;
+});

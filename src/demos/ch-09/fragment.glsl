@@ -6,6 +6,7 @@ out vec4 fragColor;
 
 uniform vec2 uResolution;
 uniform sampler2D uTexture;
+uniform float freq;
 
 float PI = 3.1415926;
 
@@ -34,7 +35,7 @@ void main() {
   cmyk.w = min(cmyk.x, min(cmyk.y, cmyk.z));
   cmyk.xyz -= cmyk.w;
 
-  float freq = 40.0;
+  // float freq = 40.0;
 
   float Kangle = PI / 4.0;
   vec2 Kst = freq * mat2(cos(Kangle), -sin(Kangle), sin(Kangle), cos(Kangle)) * pos;

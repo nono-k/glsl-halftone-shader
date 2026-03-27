@@ -5,6 +5,7 @@ in vec2 vUv;
 out vec4 fragColor;
 
 uniform vec2 uResolution;
+uniform float freq;
 
 float PI = 3.1415926;
 
@@ -12,7 +13,7 @@ void main() {
   vec2 uv = vUv;
   vec2 pos = uv * uResolution / min(uResolution.x, uResolution.y);
 
-  float freq = 10.0;
+  // float freq = 10.0;
 
   float angle = PI / 4.0;
   mat2 rot = mat2(

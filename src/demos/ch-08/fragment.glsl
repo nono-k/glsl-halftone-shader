@@ -6,6 +6,7 @@ out vec4 fragColor;
 
 uniform vec2 uResolution;
 uniform sampler2D uTexture;
+uniform float freq;
 
 float PI = 3.1415926;
 
